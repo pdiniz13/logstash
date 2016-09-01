@@ -47,6 +47,7 @@ RUN set -ex \
 		sed -ri 's!^(path.log|path.config):!#&!g' "$LS_SETTINGS_DIR/logstash.yml"; \
 	fi
 
+RUN /opt/logstash/bin/logstash-plugin install logstash-input-beats
 COPY docker-entrypoint.sh /
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
