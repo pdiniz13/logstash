@@ -7,6 +7,7 @@ RUN addgroup -S logstash && adduser -S -G logstash logstash
 RUN apk add --no-cache \
 # env: can't execute 'bash': No such file or directory
 		bash \
+		libc6-compat \
 		libzmq
 
 # grab su-exec for easy step-down from root
@@ -19,10 +20,10 @@ ENV GPG_KEY 46095ACC8548582C1A2699A9D27D666CD88E42B4
 ENV LOGSTASH_PATH /usr/share/logstash/bin
 ENV PATH $LOGSTASH_PATH:$PATH
 
-ENV LOGSTASH_VERSION 5.1.2
-ENV LOGSTASH_TARBALL="https://artifacts.elastic.co/downloads/logstash/logstash-5.1.2.tar.gz" \
-	LOGSTASH_TARBALL_ASC="https://artifacts.elastic.co/downloads/logstash/logstash-5.1.2.tar.gz.asc" \
-	LOGSTASH_TARBALL_SHA1="dead2e06f74ab09f012ac34dfb18aafeaa7b08f0"
+ENV LOGSTASH_VERSION 5.2.1
+ENV LOGSTASH_TARBALL="https://artifacts.elastic.co/downloads/logstash/logstash-5.2.1.tar.gz" \
+	LOGSTASH_TARBALL_ASC="https://artifacts.elastic.co/downloads/logstash/logstash-5.2.1.tar.gz.asc" \
+	LOGSTASH_TARBALL_SHA1="ba8c7fd6c3bb5455a5c86d7b4858d355cc7a26e8"
 
 RUN set -ex; \
 	\
