@@ -58,6 +58,9 @@ RUN set -ex; \
 		truncate --size=0 "$LS_SETTINGS_DIR/log4j2.properties"; \
 	fi
 
+#this adds the input-beats plugin
+RUN /usr/share/logstash/bin/logstash-plugin install logstash-input-beats
+
 COPY docker-entrypoint.sh /
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
